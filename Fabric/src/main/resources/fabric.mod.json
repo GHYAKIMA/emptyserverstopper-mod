@@ -1,0 +1,32 @@
+{
+    "schemaVersion": 1,
+    "id": "emptyserverstopper",
+    "version": "${version}",
+  
+    "name": "Empty Server Stopper",
+    "description": "mcEmptyServerStopper plugin port for Fabric",
+    "authors": [
+      "GHYAKIMA"
+    ],
+    "contact": {
+      "homepage": "",
+      "sources": ""
+    },
+  
+    "license": "WTFPL License",
+    "icon": "assets/emptyserverstopper/icon.png",
+  
+    "environment": "*",
+    "entrypoints": {
+      "server": [
+        "net.ghyakima.emptyserverstopper.EmptyServerStopper"
+      ]
+    },
+    "depends": {
+      "fabricloader": ">=0.7.0",
+      "fabric": ">=0.28.0",
+      "minecraft": ">=1.14.4",
+      "java": ">=8"
+    }
+  }
+  
