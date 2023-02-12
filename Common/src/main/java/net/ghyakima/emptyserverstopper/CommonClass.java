@@ -8,7 +8,7 @@ import java.util.TimerTask;
 
 public class CommonClass {
 
-    private static final int m_ShutdownTimeInMinutes = 1;
+    private static final int m_ShutdownTimeInMinutes = 15;
     private static final boolean m_ShutdownAtStart = true;
     private static MinecraftServer server;
     public static Timer timer;
