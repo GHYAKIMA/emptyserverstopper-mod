@@ -12,6 +12,7 @@ public class EmptyServerStopper implements DedicatedServerModInitializer {
 
         ServerLifecycleEvents.SERVER_STARTED.register(CommonClass::onServerStarted);
         ServerLifecycleEvents.SERVER_STOPPING.register((server -> CommonClass.timer.cancel()));
+        ServerPlayConnectionEvents.JOIN.register(((handler, sender, server) -> CommonClass.onPlayerJoin()));
         ServerPlayConnectionEvents.DISCONNECT.register(((handler, server) -> CommonClass.CheckPlayerNumber()));
     }
 }

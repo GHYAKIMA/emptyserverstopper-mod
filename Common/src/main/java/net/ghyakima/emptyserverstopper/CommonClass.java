@@ -15,7 +15,7 @@ public class CommonClass {
 
     public static void init() {
         if (Services.PLATFORM.isModLoaded("emptyserverstopper")) {
-            timer = new Timer();
+            Constants.LOG.info("Ready!");
         }
     }
 
@@ -26,15 +26,28 @@ public class CommonClass {
         }
     }
 
+    public static void onPlayerJoin() {
+        if (server.getPlayerCount() <= 1 & timer != null) {
+            Constants.LOG.info("Server shutdown cancelled. Player has joined the server");
+            timer.cancel();
+            timer.purge();
+            timer = null;
+        }
+    }
+
     public static void CheckPlayerNumber() {
         if (server.getPlayerCount() <= 1) {
             Constants.LOG.info(String.format("Server empty -> Shutdown in %d minute(s)", m_ShutdownTimeInMinutes));
-            new Timer().schedule(new TimerTask() {
+
+            TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
                     CheckAndStop();
                 }
-            }, m_ShutdownTimeInMinutes * 60000L);
+            };
+
+            timer = new Timer();
+            timer.schedule(task, m_ShutdownTimeInMinutes * 60000L);
         }
     }
 

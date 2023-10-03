@@ -30,6 +30,11 @@ public class EmptyServerStopper {
     }
 
     @SubscribeEvent
+    public void onPlayerConnect(PlayerEvent.PlayerLoggedInEvent event) {
+        CommonClass.onPlayerJoin();
+    }
+
+    @SubscribeEvent
     public void onPlayerDisconnect(PlayerEvent.PlayerLoggedOutEvent event) {
         CommonClass.CheckPlayerNumber();
     }
